@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE preferences SYSTEM "http://java.sun.com/dtd/preferences.dtd">
+<preferences EXTERNAL_XML_VERSION="1.0">
+    <root type="user">
+        <map/>
+        <node name="sf.camera.defaults">
+            <map>
+                <entry key="camera.move.maxRadius" value="8000.0"/>
+				<entry key="camera.move.speed" value="4000.0"/>
+				<entry key="camera.target.constant.rotation" value="1.571"/>
+				<entry key="camera.roll.speed.radians" value="1.571"/>
+				<entry key="camera.altitude.min" value="-1000"/>
+				<entry key="camera.altitude.max" value="3000"/>
+				<entry key="camera.vertical.roll.speed" value="3.14159"/>
+				<entry key="camera.far" value="25000"/>
+            </map>
+        </node>
+        
+        <node name="sf.ship.defaults">
+            <map>
+                <entry key="ship.roll.speed.radians" value="0.4"/>
+                <entry key="ship.speed.directional.min" value="-300"/>
+                <entry key="ship.speed.directional.max" value="1000"/>
+                <entry key="ship.acceleration.directional" value="200"/>
+            </map>
+        </node>
+        
+      <node name="sf.ship.ammunition">
+            <map>
+                <entry key="ship.ammo1.speed.directional" value="7000"/> 
+                <entry key="ship.ammo1.acceleration.z" value="-1000"/> 
+ <!--               <entry key="ship.ammo1.world.max" value="50000"/>
+                <entry key="ship.ammo1.world.min" value="-1000"/> -->
+            </map>
+        </node> 
+<!--        <node name="sf.ship.ammunition">
+            <map>
+                <entry key="ship.ammo1.speed.directional" value="140"/>
+                <entry key="ship.ammo1.world.max" value="50000"/>
+                <entry key="ship.ammo1.world.min" value="-1000"/>
+                <entry key="ship.ammo1.acceleration.z" value="-20"/> 
+            </map>
+        </node> --> 
+        
+        <node name="sf.ship.bubble">
+            <map>
+                <entry key="blab.keeper.quarantine.size" value="64"/>
+                
+                <entry key="shader.bubble.amount.total" value="256"/>
+                <entry key="ship.bubble.amount.total" value="500"/>
+                <entry key="ship.bubble.time.interval.min" value="200"/>
+                <entry key="ship.bubble.time.interval.max" value="800"/>
+                <entry key="ship.bubble.time.live" value="3000"/>
+                <entry key="ship.bubble.radius.min" value="400"/>
+                <entry key="ship.bubble.radius.max" value="700"/>
+                <entry key="ship.bubble.radius.start" value="200"/>
+                <entry key="ship.bubble.amplitude.min" value="0.1"/>
+                <entry key="ship.bubble.amplitude.max" value="0.5"/>
+            </map>
+        </node>
+        
+        <node name="sf.sea.wave">
+            <map>
+                <entry key="wave.count.max" value="13"/>
+                <entry key="wave.lifespan.mills" value="5000"/>
+                <entry key="wave.lifespan.volatility" value="0.4"/>
+                <entry key="wave.move.x" value="800"/>
+                <entry key="wave.move.y" value="630"/>
+                <entry key="wave.move.volatility" value="0.5"/>
+                <entry key="wave.amplitude" value="23"/>
+                <entry key="wave.amplitude.volatility" value="0.2"/>
+
+            </map>
+        </node>
+        
+        <node name="sf.panel.defaults.portrate">
+            <map>
+                <entry key="panel.relative.width" value="1.0"/>
+				<entry key="panel.relative.height" value="0.2"/>
+				<entry key="panel.padding" value="1"/>
+<!--				<entry key="panel.background.color" value="99bf334c"/>  -->
+				<entry key="panel.background.color" value="99bf3300"/>
+                <entry key="panel.border.color" value="99bf3300"/>
+<!--				<entry key="panel.border.color" value="ffff00ff"/>-->
+            </map>
+        </node>
+        <node name="sf.panel.defaults.landscape">
+            <map>
+                <entry key="panel.relative.width" value="1.0"/>
+				<entry key="panel.relative.height" value="0.45"/>
+				<entry key="panel.padding" value="2"/>
+				<entry key="panel.background.color" value="99bf3300"/>
+                <entry key="panel.border.color" value="99bf3300"/>
+                <!--				<entry key="panel.border.color" value="ffff00ff"/>-->
+            </map>
+        </node>
+    </root>
+</preferences>

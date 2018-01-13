@@ -1,0 +1,124 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+        jcenter()
+    }
+    dependencies {
+        classpath 'de.richsource.gradle.plugins:gwt-gradle-plugin:0.6'
+        classpath 'com.android.tools.build:gradle:1.2.3'
+        classpath 'org.robovm:robovm-gradle-plugin:1.2.0'
+    }
+//    tasks.withType(JavaCompile) {
+//        sourceCompatibility = JavaVersion.VERSION_1_7
+//        targetCompatibility = JavaVersion.VERSION_1_7
+//    }
+}
+
+//dependencies{
+//    compile fileTree(include: ['*.jar'], dir: 'libs')
+//}
+
+allprojects {
+    apply plugin: "eclipse"
+    apply plugin: "idea"
+
+    version = '1.0'
+    ext {
+        appName = 'seawar'
+        //gdxVersion = '1.6.1'
+        gdxVersion = '1.9.6'
+        roboVMVersion = '1.2.0'
+        box2DLightsVersion = '1.3'
+        ashleyVersion = '1.4.0'
+        aiVersion = '1.5.0'
+    }
+
+    repositories {
+        mavenCentral()
+        mavenLocal()
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+        maven { url "https://oss.sonatype.org/content/repositories/releases/" }
+    }
+}
+
+project(":core") {
+    apply plugin: "java"
+
+
+    dependencies {
+        compile "com.badlogicgames.gdx:gdx:$gdxVersion"
+        //compile "com.odmyhal:bricks-engine:0.0.1-SNAPSHOT"
+        //compile "com.odmyhal:bricks-enterprise:0.0.1-SNAPSHOT"
+        //compile "com.odmyhal:bricks-extent:0.0.1-SNAPSHOT"
+        //compile "com.odmyhal:ship-fight:0.0.1-SNAPSHOT"
+        compile "com.odmyhal:bricks-engine:1.0.2"
+        compile "com.odmyhal:bricks-enterprise:1.0.2"
+        compile "com.odmyhal:bricks-extent:1.0.2"
+        compile "com.odmyhal:ship-fight:1.0.2"
+    }
+}
+
+project(":desktop") {
+    apply plugin: "java"
+
+
+    dependencies {
+        compile project(":core")
+        compile "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
+        compile "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
+    }
+}
+
+project(":android") {
+    apply plugin: "android"
+
+    configurations { natives }
+
+    dependencies {
+        compile project(":core")
+        compile "com.badlogicgames.gdx:gdx-backend-android:$gdxVersion"
+        natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi"
+        natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi-v7a"
+        natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-x86"
+        //compile "com.odmyhal:bricks-engine:0.0.1-SNAPSHOT"
+        //compile "com.odmyhal:bricks-enterprise:0.0.1-SNAPSHOT"
+        //compile "com.odmyhal:bricks-extent:0.0.1-SNAPSHOT"
+        //compile "com.odmyhal:ship-fight:0.0.1-SNAPSHOT"
+        compile "com.odmyhal:bricks-engine:1.0.2"
+        compile "com.odmyhal:bricks-enterprise:1.0.2"
+        compile "com.odmyhal:bricks-extent:1.0.2"
+        compile "com.odmyhal:ship-fight:1.0.2"
+    }
+}
+
+project(":ios") {
+    apply plugin: "java"
+    apply plugin: "robovm"
+
+
+    dependencies {
+        compile project(":core")
+        compile "org.robovm:robovm-rt:$roboVMVersion"
+        compile "org.robovm:robovm-cocoatouch:$roboVMVersion"
+        compile "com.badlogicgames.gdx:gdx-backend-robovm:$gdxVersion"
+        compile "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-ios"
+    }
+}
+
+project(":html") {
+    apply plugin: "gwt"
+    apply plugin: "war"
+
+
+    dependencies {
+        compile project(":core")
+        compile "com.badlogicgames.gdx:gdx-backend-gwt:$gdxVersion"
+        compile "com.badlogicgames.gdx:gdx:$gdxVersion:sources"
+        compile "com.badlogicgames.gdx:gdx-backend-gwt:$gdxVersion:sources"
+    }
+}
+
+tasks.eclipse.doLast {
+    delete ".project"
+}
